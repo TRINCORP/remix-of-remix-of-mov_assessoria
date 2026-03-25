@@ -358,12 +358,6 @@ const PinnedSection = () => {
             </div>
             
             {/* Scroll indicator */}
-            {scrollProgress < 0.9 && (
-              <div className="flex flex-col items-center gap-2 animate-bounce">
-                <span className="text-xs text-muted-foreground">Continue rolando</span>
-                <ArrowDown className="w-4 h-4 text-primary" />
-              </div>
-            )}
           </div>
         </div>
 
