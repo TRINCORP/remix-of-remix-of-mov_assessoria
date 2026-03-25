@@ -91,14 +91,7 @@ const ForWhoSection = () => {
             style={{ transitionDelay: '150ms' }}
           >
             <span className="text-foreground">Não atendemos</span>{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, hsl(45, 96%, 75%) 0%, hsl(45, 96%, 64%) 30%, hsl(38, 92%, 50%) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 4px 30px hsl(45, 96%, 64%, 0.3))',
-              }}
-            >
+            <span className="text-gradient-brand">
               qualquer empresa
             </span>
           </h2>

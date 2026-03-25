@@ -52,12 +52,9 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
           style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
         >
           <h1 
-            className="text-[4rem] md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-none"
+            className="text-[4rem] md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-none text-gradient-brand"
             style={{
-              background: 'linear-gradient(135deg, hsl(45, 96%, 72%) 0%, hsl(45, 96%, 64%) 50%, hsl(38, 92%, 50%) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 0 30px hsla(45, 96%, 64%, 0.4))',
+              filter: 'drop-shadow(0 0 30px hsl(var(--primary) / 0.4))',
             }}
           >
             MOV

@@ -394,12 +394,9 @@ const PinnedSection = () => {
                   style={{ transitionDelay: '400ms' }}
                 >
                 <span 
-                    className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-black"
+                    className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[14rem] font-black text-gradient-brand"
                     style={{
-                      background: 'linear-gradient(135deg, hsl(45, 96%, 75%) 0%, hsl(45, 96%, 64%) 40%, hsl(38, 92%, 50%) 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      filter: 'drop-shadow(0 0 40px hsla(45, 96%, 64%, 0.5))',
+                      filter: 'drop-shadow(0 0 40px hsl(var(--primary) / 0.5))',
                     }}
                   >
                     100%
