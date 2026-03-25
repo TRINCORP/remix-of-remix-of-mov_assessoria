@@ -96,14 +96,7 @@ const ProblemsSection = () => {
           >
             <span className="text-foreground">Seu marketing existe, mas</span>
             <br />
-            <span
-              style={{
-                background: 'linear-gradient(135deg, hsl(0, 70%, 60%) 0%, hsl(30, 90%, 55%) 50%, hsl(45, 96%, 64%) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 4px 20px hsl(0, 70%, 50%, 0.2))',
-              }}
-            >
+            <span className="text-gradient-brand">
               não gera resultado?
             </span>
           </h2>
@@ -196,14 +189,7 @@ const ProblemsSection = () => {
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Organizando o marketing como um{' '}
-              <span
-                className="font-bold"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(45, 96%, 70%) 0%, hsl(45, 96%, 64%) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
+              <span className="font-bold text-gradient-brand">
                 sistema estratégico
               </span>
               , alinhado aos objetivos reais da sua empresa.

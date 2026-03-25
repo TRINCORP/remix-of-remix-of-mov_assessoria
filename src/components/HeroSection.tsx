@@ -83,13 +83,7 @@ const HeroSection = () => {
           >
             <span className="block text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight text-foreground section-title-animate">
               Marketing que faz pequenos e médios negócios{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, hsl(45, 96%, 72%) 0%, hsl(45, 96%, 64%) 50%, hsl(38, 92%, 50%) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
+              <span className="text-gradient-brand">
                 crescerem de verdade
               </span>
             </span>

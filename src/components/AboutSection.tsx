@@ -143,15 +143,7 @@ const AboutSection = () => {
             style={{ transitionDelay: '150ms' }}
           >
             <span className="text-foreground block">Não somos uma</span>
-            <span 
-              className="block mt-2"
-              style={{
-                background: 'linear-gradient(135deg, hsl(45, 96%, 75%) 0%, hsl(45, 96%, 64%) 30%, hsl(38, 92%, 50%) 70%, hsl(32, 95%, 45%) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 4px 30px hsl(45, 96%, 64%, 0.3))',
-              }}
-            >
+            <span className="block mt-2 text-gradient-brand">
               agência comum
             </span>
           </h2>
@@ -241,13 +233,7 @@ const AboutSection = () => {
                 
                 <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight">
                   Sua marca merece{' '}
-                  <span 
-                    style={{
-                      background: 'linear-gradient(135deg, hsl(45, 96%, 70%) 0%, hsl(45, 96%, 64%) 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
+                  <span className="text-gradient-brand">
                     atenção total
                   </span>
                 </h3>
