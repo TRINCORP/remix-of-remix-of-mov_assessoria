@@ -182,14 +182,7 @@ const AboutSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative bg-muted/30 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-border/50 group-hover:border-primary/30 transition-all duration-500 group-hover:scale-105">
                   <Icon className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <div 
-                    className="text-4xl md:text-5xl font-black mb-2"
-                    style={{
-                      background: 'linear-gradient(135deg, hsl(45, 96%, 70%) 0%, hsl(45, 96%, 64%) 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
+                  <div className="text-4xl md:text-5xl font-black mb-2 text-gradient-brand">
                     {stat.value}
                   </div>
                   <div className="text-sm text-muted-foreground font-medium">
