@@ -53,7 +53,7 @@ const VideoHeroBanner = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-[60vh] md:h-[70vh] overflow-hidden"
+      className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden"
     >
       {/* Video Background */}
       <video
@@ -94,17 +94,17 @@ const VideoHeroBanner = () => {
           }`}
         >
           {/* Glitch text effect */}
-      <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 relative glitch-container">
+      <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black mb-2 sm:mb-4 relative glitch-container">
             <span className="glitch-text text-white relative">
               MARKETING
             </span>
           </h2>
-          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6">
             <span className="text-gradient">QUE MOVE</span>
           </h2>
           
           {/* Animated subtitle */}
-          <div className="flex items-center justify-center gap-2 sm:gap-4 text-sm sm:text-xl md:text-2xl text-white/80 flex-wrap">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-4 text-xs sm:text-lg md:text-2xl text-white/80 flex-wrap px-4">
             <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-pulse" />
             <span>Estratégia</span>
             <span className="text-primary">•</span>
@@ -117,10 +117,10 @@ const VideoHeroBanner = () => {
       </div>
 
       {/* Video controls */}
-      <div className="absolute bottom-6 right-6 flex gap-3">
+      <div className="absolute bottom-16 sm:bottom-6 right-4 sm:right-6 flex gap-2 sm:gap-3 z-10">
         <button
           onClick={togglePlay}
-          className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
           aria-label={isPlaying ? 'Pausar' : 'Reproduzir'}
         >
           {isPlaying ? (
@@ -131,7 +131,7 @@ const VideoHeroBanner = () => {
         </button>
         <button
           onClick={toggleMute}
-          className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
           aria-label={isMuted ? 'Ativar som' : 'Silenciar'}
         >
           {isMuted ? (
@@ -142,8 +142,8 @@ const VideoHeroBanner = () => {
         </button>
       </div>
 
-      {/* Scroll indicator - hidden on very small screens to avoid overlap */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center gap-2">
+      {/* Scroll indicator - hidden on small screens to avoid overlap with controls */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
         <span className="text-xs text-white/60 uppercase tracking-widest">Role para explorar</span>
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce" />

@@ -42,7 +42,7 @@ const ForWhoSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="gsap-section relative py-28 md:py-40 overflow-hidden bg-background"
+      className="gsap-section relative py-16 sm:py-28 md:py-40 overflow-hidden bg-background"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -71,7 +71,7 @@ const ForWhoSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20 md:mb-28">
+        <div className="text-center mb-12 sm:mb-20 md:mb-28">
           <div
             className={`inline-flex items-center gap-3 mb-8 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -85,7 +85,7 @@ const ForWhoSection = () => {
           </div>
 
           <h2
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] mb-8 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.05] mb-6 sm:mb-8 transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '150ms' }}
@@ -115,7 +115,7 @@ const ForWhoSection = () => {
         </div>
 
         {/* Ideal Client Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-20">
           {idealClients.map((client, index) => {
             const Icon = client.icon;
             return (
@@ -130,7 +130,7 @@ const ForWhoSection = () => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-primary/5 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                <div className="relative h-full bg-muted/30 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-border/50 group-hover:border-primary/30 transition-all duration-500 overflow-hidden">
+                <div className="relative h-full bg-muted/30 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border border-border/50 group-hover:border-primary/30 transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative mb-6">
@@ -170,7 +170,7 @@ const ForWhoSection = () => {
           }`}
           style={{ transitionDelay: '800ms' }}
         >
-          <div className="relative bg-muted/20 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-border/30 overflow-hidden">
+          <div className="relative bg-muted/20 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-border/30 overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-red-500/60 via-red-500/30 to-transparent" />
 
             <div className="flex items-center gap-3 mb-6">

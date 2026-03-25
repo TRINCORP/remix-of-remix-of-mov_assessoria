@@ -135,7 +135,7 @@ const PinnedSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative h-[250vh] sm:h-[300vh] md:h-[400vh] lg:h-[500vh] bg-background"
+      className="relative h-[200vh] sm:h-[250vh] md:h-[400vh] lg:h-[500vh] bg-background"
     >
       {/* Conteúdo fixo */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
@@ -245,7 +245,7 @@ const PinnedSection = () => {
               <div className="overflow-hidden mb-4">
               <h2 
                   key={slide?.headline}
-                  className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black animate-fade-in leading-tight section-title-animate"
+                  className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black animate-fade-in leading-tight section-title-animate"
                   style={{ 
                     color: slide?.accent || 'hsl(var(--primary))',
                     textShadow: `0 0 60px ${slide?.accent || 'hsl(var(--primary))'}40`,
@@ -258,7 +258,7 @@ const PinnedSection = () => {
               <div className="overflow-hidden mb-4 sm:mb-6">
               <h3 
                   key={slide?.subline}
-                  className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground animate-fade-in leading-snug"
+                  className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold text-foreground animate-fade-in leading-snug"
                   style={{ animationDelay: '100ms' }}
                 >
                   {slide?.subline}

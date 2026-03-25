@@ -45,7 +45,7 @@ const ProblemsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="gsap-section relative py-28 md:py-40 overflow-hidden bg-background"
+      className="gsap-section relative py-16 sm:py-28 md:py-40 overflow-hidden bg-background"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -74,7 +74,7 @@ const ProblemsSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-20 md:mb-28">
+        <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-20 md:mb-28">
           <div
             className={`inline-flex items-center gap-3 mb-8 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -89,7 +89,7 @@ const ProblemsSection = () => {
           </div>
 
           <h2
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] mb-8 transition-all duration-1000 ${
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.05] mb-6 sm:mb-8 transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '150ms' }}
@@ -121,7 +121,7 @@ const ProblemsSection = () => {
         </div>
 
         {/* Problems Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto mb-12 sm:mb-20">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             const isHovered = hoveredProblem === index;
@@ -143,7 +143,7 @@ const ProblemsSection = () => {
                   }}
                 />
 
-                <div className="relative h-full bg-muted/20 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-border/40 group-hover:border-primary/25 transition-all duration-500 overflow-hidden group-hover:bg-muted/30">
+                <div className="relative h-full bg-muted/20 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border border-border/40 group-hover:border-primary/25 transition-all duration-500 overflow-hidden group-hover:bg-muted/30">
                   <div
                     className="absolute -top-4 -right-2 text-[8rem] font-black leading-none select-none pointer-events-none transition-all duration-700"
                     style={{
