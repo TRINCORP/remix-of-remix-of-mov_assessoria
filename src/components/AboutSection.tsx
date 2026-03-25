@@ -80,7 +80,7 @@ const AboutSection = () => {
     <section 
       ref={sectionRef} 
       id="about" 
-      className="gsap-section relative py-24 md:py-40 overflow-hidden bg-background"
+      className="gsap-section relative py-16 sm:py-24 md:py-40 overflow-hidden bg-background"
     >
       {/* Dynamic Background */}
       <div className="absolute inset-0">
@@ -121,7 +121,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         
         {/* Hero Header - Cinematic Reveal */}
-        <div className="text-center mb-20 md:mb-32">
+        <div className="text-center mb-12 sm:mb-20 md:mb-32">
           <div 
             className={`inline-flex items-center gap-3 mb-8 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -137,7 +137,7 @@ const AboutSection = () => {
           </div>
           
           <h2 
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] transition-all duration-1000 section-title-animate section-title-glow ${
+            className={`text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 sm:mb-8 leading-[1] transition-all duration-1000 section-title-animate section-title-glow ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
             style={{ transitionDelay: '150ms' }}
@@ -157,7 +157,7 @@ const AboutSection = () => {
           </h2>
           
           <p 
-            className={`text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${
+            className={`text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '300ms' }}
@@ -171,7 +171,7 @@ const AboutSection = () => {
         {/* Stats Strip - Floating Cards */}
         <div 
           ref={cardsRef}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-20 md:mb-32 transition-all duration-1000 ${
+          className={`grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-20 md:mb-32 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
           style={{ transitionDelay: '400ms' }}
@@ -188,7 +188,7 @@ const AboutSection = () => {
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-muted/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border/50 group-hover:border-primary/30 transition-all duration-500 group-hover:scale-105">
+                <div className="relative bg-muted/30 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-border/50 group-hover:border-primary/30 transition-all duration-500 group-hover:scale-105">
                   <Icon className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
                   <div 
                     className="text-4xl md:text-5xl font-black mb-2"
@@ -220,7 +220,7 @@ const AboutSection = () => {
           {/* Background glow */}
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 rounded-[3rem] blur-3xl" />
           
-          <div className="relative bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 backdrop-blur-xl rounded-[2rem] md:rounded-[3rem] p-10 md:p-16 border border-primary/20 overflow-hidden">
+          <div className="relative bg-gradient-to-br from-muted/40 via-muted/20 to-muted/40 backdrop-blur-xl rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 border border-primary/20 overflow-hidden">
             {/* Animated background pattern */}
             <div 
               className="absolute inset-0 opacity-5"
@@ -230,7 +230,7 @@ const AboutSection = () => {
               }}
             />
 
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10">
               <div className="text-center lg:text-left max-w-2xl">
                 <div className="inline-flex items-center gap-2 mb-6">
                   <TrendingUp className="w-5 h-5 text-primary" />
@@ -239,7 +239,7 @@ const AboutSection = () => {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-4 leading-tight">
                   Sua marca merece{' '}
                   <span 
                     style={{
@@ -260,7 +260,7 @@ const AboutSection = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  className="group relative h-14 md:h-16 px-10 md:px-12 text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(234,179,8,0.4)]"
+                  className="group relative h-12 sm:h-14 md:h-16 px-6 sm:px-10 md:px-12 text-base sm:text-lg font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(234,179,8,0.4)]"
                   onClick={() => window.open('https://wa.me/5519981134193', '_blank')}
                 >
                   <span className="relative z-10 flex items-center gap-2">
@@ -272,7 +272,7 @@ const AboutSection = () => {
                 
                 <Button 
                   variant="outline"
-                  className="h-14 md:h-16 px-10 md:px-12 text-lg font-semibold rounded-2xl border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                  className="h-12 sm:h-14 md:h-16 px-6 sm:px-10 md:px-12 text-base sm:text-lg font-semibold rounded-xl sm:rounded-2xl border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
                   onClick={() => window.open('https://wa.me/5519981134193', '_blank')}
                 >
                   <Users className="w-5 h-5 mr-2" />
