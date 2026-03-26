@@ -135,10 +135,10 @@ const PinnedSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative h-[200vh] sm:h-[250vh] md:h-[400vh] lg:h-[500vh] bg-background"
+      className="relative h-[200vh] sm:h-[250vh] md:h-[400vh] lg:h-[500vh] bg-background dark-section"
     >
       {/* Conteúdo fixo */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden relative">
         
         {/* Background slides */}
         {slides.map((s, index) => (
@@ -265,13 +265,29 @@ const PinnedSection = () => {
                 </h3>
               </div>
               
-              <p 
+              <p
                 key={slide?.description}
                 className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in leading-relaxed"
                 style={{ animationDelay: '200ms' }}
               >
                 {slide?.description}
               </p>
+
+              {/* Mobile-only: percentage badge */}
+              <div className="flex lg:hidden items-center justify-center gap-3 mt-6">
+                <div
+                  className="text-4xl font-black transition-all duration-300"
+                  style={{
+                    color: slide?.accent || 'hsl(var(--primary))',
+                    textShadow: `0 0 24px ${slide?.accent || 'hsl(var(--primary))'}60`,
+                  }}
+                >
+                  {Math.round(scrollProgress * 100)}%
+                </div>
+                <div className="text-xs text-muted-foreground font-medium tracking-widest uppercase">
+                  Imersão completa
+                </div>
+              </div>
             </div>
 
             {/* Right: Visual element */}
@@ -336,28 +352,27 @@ const PinnedSection = () => {
             </div>
           </div>
 
-          {/* Progress bar - Goat style */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-md px-4">
-            <div className="flex items-center gap-2 mb-4 justify-center">
-              {slides.map((_, index) => (
-                <div 
-                  key={index}
-                  className={`h-1 rounded-full transition-all duration-500 ${
-                    index === currentSlide ? 'w-12' : 'w-4'
-                  }`}
-                  style={{
-                    background: index === currentSlide 
-                      ? slide?.accent || 'hsl(var(--primary))'
-                      : 'hsl(var(--muted-foreground) / 0.2)',
-                    boxShadow: index === currentSlide 
-                      ? `0 0 10px ${slide?.accent || 'hsl(var(--primary))'}60` 
-                      : 'none',
-                  }}
-                />
-              ))}
-            </div>
-            
-            {/* Scroll indicator */}
+        </div>
+
+        {/* Progress bar — fixado ao fundo do wrapper sticky, sem sobreposição */}
+        <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md px-4 z-10 transition-opacity duration-500 ${showFinalReveal ? 'opacity-0' : 'opacity-100'}`}>
+          <div className="flex items-center gap-2 justify-center">
+            {slides.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1 rounded-full transition-all duration-500 ${
+                  index === currentSlide ? 'w-12' : 'w-4'
+                }`}
+                style={{
+                  background: index === currentSlide
+                    ? slide?.accent || 'hsl(var(--primary))'
+                    : 'hsl(var(--muted-foreground) / 0.2)',
+                  boxShadow: index === currentSlide
+                    ? `0 0 10px ${slide?.accent || 'hsl(var(--primary))'}60`
+                    : 'none',
+                }}
+              />
+            ))}
           </div>
         </div>
 

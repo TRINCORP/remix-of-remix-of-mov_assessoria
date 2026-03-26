@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, Play, Pause, Rocket, Target } from 'lucide-react';
+import { Rocket, Target } from 'lucide-react';
 
 const VideoHeroBanner = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,7 +53,7 @@ const VideoHeroBanner = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden"
+      className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] overflow-hidden dark-section"
     >
       {/* Video Background */}
       <video
@@ -94,12 +94,12 @@ const VideoHeroBanner = () => {
           }`}
         >
           {/* Glitch text effect */}
-      <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black mb-2 sm:mb-4 relative glitch-container">
+      <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-2 sm:mb-4 relative glitch-container">
             <span className="glitch-text text-white relative">
               MARKETING
             </span>
           </h2>
-          <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-black mb-4 sm:mb-6">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6">
             <span className="text-gradient">QUE MOVE</span>
           </h2>
           
@@ -116,31 +116,6 @@ const VideoHeroBanner = () => {
         </div>
       </div>
 
-      {/* Video controls */}
-      <div className="absolute bottom-16 sm:bottom-6 right-4 sm:right-6 flex gap-2 sm:gap-3 z-10">
-        <button
-          onClick={togglePlay}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
-          aria-label={isPlaying ? 'Pausar' : 'Reproduzir'}
-        >
-          {isPlaying ? (
-            <Pause className="w-5 h-5 text-white" />
-          ) : (
-            <Play className="w-5 h-5 text-white ml-0.5" />
-          )}
-        </button>
-        <button
-          onClick={toggleMute}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors border border-white/30"
-          aria-label={isMuted ? 'Ativar som' : 'Silenciar'}
-        >
-          {isMuted ? (
-            <VolumeX className="w-5 h-5 text-white" />
-          ) : (
-            <Volume2 className="w-5 h-5 text-white" />
-          )}
-        </button>
-      </div>
 
       {/* Scroll indicator - hidden on small screens to avoid overlap with controls */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-2">

@@ -44,8 +44,9 @@ export const useGSAPNavigation = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: section,
-          start: "top 90%",
-          toggleActions: "play none none none"
+          start: "top 95%",
+          toggleActions: "play none none none",
+          invalidateOnRefresh: true,
         }
       });
     });
@@ -67,8 +68,9 @@ export const useGSAPNavigation = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: headline,
-          start: "top 85%",
-          toggleActions: "play none none reverse"
+          start: "top 95%",
+          toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
         }
       });
     });
@@ -113,8 +115,9 @@ export const useGSAPNavigation = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: container,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
+          start: "top 95%",
+          toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
         }
       });
     });
@@ -175,8 +178,9 @@ export const useGSAPNavigation = () => {
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: badge,
-          start: "top 90%",
-          toggleActions: "play none none reverse"
+          start: "top 98%",
+          toggleActions: "play none none reverse",
+          invalidateOnRefresh: true,
         }
       });
     });
@@ -382,9 +386,22 @@ export const useGSAPNavigation = () => {
     });
 
     document.addEventListener('click', handleSmoothScroll);
-    
+
+    // Recalcula posições após layout estabilizar — crítico para seções
+    // após o PinnedSection (altura variável: 200vh mobile → 500vh desktop)
+    const refreshTimers = [
+      setTimeout(() => ScrollTrigger.refresh(), 300),
+      setTimeout(() => ScrollTrigger.refresh(), 800),
+      setTimeout(() => ScrollTrigger.refresh(), 1500),
+    ];
+
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('click', handleSmoothScroll);
+      window.removeEventListener('resize', handleResize);
+      refreshTimers.forEach(clearTimeout);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);

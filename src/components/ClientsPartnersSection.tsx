@@ -370,33 +370,45 @@ const ClientsPartnersSection = ({ theme = 'dark' }: ClientsPartnersSectionProps)
             <span className="text-sm font-medium text-primary">Confiança que gera resultados</span>
           </motion.div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 overflow-hidden">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 overflow-visible">
             <motion.span
               className="inline-block text-foreground"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               Nossos{" "}
             </motion.span>
-            <motion.span 
+            <motion.span
               className="relative inline-block"
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              {/* Glow pulsante atrás do texto */}
+              <motion.span
+                className="absolute inset-0 -inset-x-4 blur-2xl rounded-full pointer-events-none"
+                style={{ background: 'linear-gradient(to right, hsl(var(--primary) / 0.5), hsl(var(--secondary) / 0.6), hsl(var(--primary) / 0.5))' }}
+                animate={{ opacity: [0.3, 0.7, 0.3] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                aria-hidden="true"
+              />
+              <span
+                className="relative bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent section-title-shimmer"
+                style={{ backgroundSize: '200% auto' }}
+              >
                 Clientes & Parceiros
               </span>
-              {/* Underline effect */}
-              <motion.div 
-                className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-primary via-accent to-primary"
+              {/* Underline animada */}
+              <motion.div
+                className="absolute -bottom-2 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-primary via-secondary to-primary section-title-shimmer"
+                style={{ backgroundSize: '200% auto' }}
                 initial={{ scaleX: 0, originX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.9, delay: 0.7 }}
               />
             </motion.span>
           </h2>

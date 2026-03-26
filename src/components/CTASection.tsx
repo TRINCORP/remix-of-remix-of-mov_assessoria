@@ -401,17 +401,17 @@ const CTASection = () => {
             <div className="card-glow">
               <h3 className="text-2xl font-bold text-foreground mb-6">Contatos diretos</h3>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <a
                   href="tel:+5519981134193"
                   className="flex items-center gap-4 p-4 bg-primary/5 rounded-2xl hover:bg-primary/10 transition-colors cursor-pointer group"
                 >
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="w-11 h-11 shrink-0 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Phone className="w-5 h-5 text-primary-foreground" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Telefone</div>
-                    <div className="text-muted-foreground">(19) 98113-4193</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-foreground text-sm">Telefone</div>
+                    <div className="text-muted-foreground text-sm">(19) 98113-4193</div>
                   </div>
                 </a>
 
@@ -419,12 +419,12 @@ const CTASection = () => {
                   href="mailto:comercial.movassessoria@gmail.com"
                   className="flex items-center gap-4 p-4 bg-secondary/5 rounded-2xl hover:bg-secondary/10 transition-colors cursor-pointer group"
                 >
-                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="w-11 h-11 shrink-0 bg-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Mail className="w-5 h-5 text-primary-foreground" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">comercial.movassessoria@gmail.com</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-foreground text-sm">Email</div>
+                    <div className="text-muted-foreground text-sm break-all">comercial.movassessoria@gmail.com</div>
                   </div>
                 </a>
 
@@ -432,14 +432,17 @@ const CTASection = () => {
                   href="https://wa.me/5519981134193"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-accent/5 rounded-2xl hover:bg-accent/10 transition-colors cursor-pointer group"
+                  className="flex items-center gap-4 p-4 rounded-2xl transition-colors cursor-pointer group"
+                  style={{ background: 'rgba(37,211,102,0.07)' }}
+                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(37,211,102,0.14)')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'rgba(37,211,102,0.07)')}
                 >
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <MessageCircle className="w-6 h-6 text-white" />
+                  <div className="w-11 h-11 shrink-0 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform" style={{ background: '#25D366' }}>
+                    <MessageCircle className="w-5 h-5 text-white" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">WhatsApp</div>
-                    <div className="text-muted-foreground">Resposta instantânea</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-foreground text-sm">WhatsApp</div>
+                    <div className="text-muted-foreground text-sm">Resposta instantânea</div>
                   </div>
                 </a>
               </div>

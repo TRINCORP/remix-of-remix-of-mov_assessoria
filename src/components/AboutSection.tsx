@@ -2,9 +2,132 @@ import { useState, useRef, useEffect } from 'react';
 import { ArrowRight, Rocket, Target, Sparkles, Zap, Users, TrendingUp, Crown, Star, Diamond } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+// ── Holographic stat card ────────────────────────────────────────────
+const StatCard = ({
+  stat,
+  index,
+  isVisible,
+}: {
+  stat: { value: string; label: string; icon: typeof Star };
+  index: number;
+  isVisible: boolean;
+}) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [pointer, setPointer] = useState({ x: 0.5, y: 0.5 });
+  const [hovered, setHovered] = useState(false);
+  const [entered, setEntered] = useState(false);
+  const [count, setCount] = useState('0');
+  const Icon = stat.icon;
+
+  // Staggered fade-up entry
+  useEffect(() => {
+    if (!isVisible || entered) return;
+    const t = setTimeout(() => setEntered(true), index * 150);
+    return () => clearTimeout(t);
+  }, [isVisible, entered, index]);
+
+  // Smooth counter animation
+  useEffect(() => {
+    if (!entered) return;
+    const numeric = parseInt(stat.value.replace(/\D/g, ''), 10);
+    if (isNaN(numeric)) { setCount(stat.value); return; }
+    const suffix = stat.value.replace(/[\d]/g, '');
+    const duration = 1200;
+    let start: number | null = null;
+    const raf = (ts: number) => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setCount(Math.round(eased * numeric) + suffix);
+      if (p < 1) requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }, [entered, stat.value]);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const r = cardRef.current.getBoundingClientRect();
+    setPointer({
+      x: (e.clientX - r.left) / r.width,
+      y: (e.clientY - r.top) / r.height,
+    });
+  };
+
+  // Holographic gradient angles driven by mouse position
+  const rotateX = hovered ? (pointer.y - 0.5) * -22 : 0;
+  const rotateY = hovered ? (pointer.x - 0.5) * 22 : 0;
+  const hueShift = Math.round(pointer.x * 180);
+  const shine = `radial-gradient(
+    circle at ${pointer.x * 100}% ${pointer.y * 100}%,
+    hsla(${hueShift}, 100%, 80%, 0.28) 0%,
+    hsla(${hueShift + 60}, 90%, 70%, 0.18) 30%,
+    hsla(${hueShift + 120}, 80%, 65%, 0.10) 55%,
+    transparent 70%
+  )`;
+
+  return (
+    <div
+      ref={cardRef}
+      className="relative cursor-default select-none"
+      style={{ perspective: '900px' }}
+      onMouseMove={onMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => { setHovered(false); setPointer({ x: 0.5, y: 0.5 }); }}
+    >
+      <div
+        className="rounded-2xl border border-border/50 bg-card overflow-hidden p-6 md:p-8"
+        style={{
+          transform: entered
+            ? `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${hovered ? 10 : 0}px) translateY(0) scale(1)`
+            : 'translateY(32px) scale(0.96)',
+          opacity: entered ? 1 : 0,
+          transition: hovered
+            ? 'transform 0.08s linear'
+            : entered
+              ? 'transform 0.7s cubic-bezier(0.22,1,0.36,1), opacity 0.6s ease'
+              : 'none',
+          boxShadow: hovered
+            ? `0 20px 60px -10px hsl(${hueShift} 80% 50% / 0.25), 0 0 0 1px hsl(${hueShift} 80% 60% / 0.2)`
+            : '0 4px 24px -4px hsl(0 0% 0% / 0.15)',
+          willChange: 'transform',
+        }}
+      >
+        {/* Holographic foil overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none rounded-2xl"
+          style={{
+            background: hovered ? shine : 'transparent',
+            transition: hovered ? 'none' : 'background 0.4s',
+            mixBlendMode: 'screen',
+          }}
+        />
+        {/* Subtle gloss line */}
+        <div
+          className="absolute inset-0 pointer-events-none rounded-2xl"
+          style={{
+            background: hovered
+              ? `linear-gradient(${105 + rotateY * 2}deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)`
+              : 'transparent',
+            transition: 'background 0.08s',
+          }}
+        />
+
+        <Icon className="relative z-10 w-6 h-6 text-primary mb-4" />
+        <div className="relative z-10 text-4xl md:text-5xl font-black mb-2 text-gradient-brand tabular-nums">
+          {count}
+        </div>
+        <div className="relative z-10 text-sm text-muted-foreground font-medium tracking-wide">
+          {stat.label}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ════════════════════════════════════════════════════════════════════
+
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -160,38 +283,14 @@ const AboutSection = () => {
           </p>
         </div>
 
-        {/* Stats Strip - Floating Cards */}
-        <div 
+        {/* Stats Strip - Animated Cards */}
+        <div
           ref={cardsRef}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-20 md:mb-32 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-          style={{ transitionDelay: '400ms' }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-20 md:mb-32"
         >
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div 
-                key={stat.label}
-                className="group relative"
-                style={{
-                  transform: `translate(${mousePosition.x * (index % 2 === 0 ? 1 : -1)}px, ${mousePosition.y * (index < 2 ? 1 : -1)}px)`,
-                  transition: 'transform 0.3s ease-out',
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-muted/30 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-border/50 group-hover:border-primary/30 transition-all duration-500 group-hover:scale-105">
-                  <Icon className="w-6 h-6 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <div className="text-4xl md:text-5xl font-black mb-2 text-gradient-brand">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {stats.map((stat, index) => (
+            <StatCard key={stat.label} stat={stat} index={index} isVisible={isVisible} />
+          ))}
         </div>
 
 
@@ -266,6 +365,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
+
     </section>
   );
 };

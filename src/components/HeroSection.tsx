@@ -23,7 +23,7 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef} 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-x-hidden dark-section"
     >
       {/* Background Image with Overlay */}
       <div 
@@ -58,7 +58,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center pt-24 sm:pt-0">
         <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           
           {/* Eyebrow Badge */}

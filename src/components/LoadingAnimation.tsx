@@ -28,7 +28,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-all duration-500 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-all duration-500 dark-section ${
         isExiting ? 'opacity-0 scale-110' : 'opacity-100 scale-100'
       }`}
       style={{ backgroundColor: 'hsl(0 0% 2%)' }}
