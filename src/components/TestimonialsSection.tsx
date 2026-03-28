@@ -113,7 +113,7 @@ const TestimonialsSection = () => {
               transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
             }}
           >
-            <Quote className="w-4 h-4 text-secondary animate-pulse" />
+            <Quote className="w-4 h-4 text-secondary" />
             <span className="text-xs font-bold tracking-widest text-secondary uppercase">Depoimentos</span>
           </div>
 

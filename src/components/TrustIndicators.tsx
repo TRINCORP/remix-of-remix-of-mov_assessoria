@@ -128,7 +128,7 @@ const TrustIndicators = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="gsap-badge inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-3 mb-6">
-            <Shield className="w-5 h-5 text-primary animate-pulse" />
+            <Shield className="w-5 h-5 text-primary" />
             <span className="text-caption text-primary">CONFIANÇA COMPROVADA</span>
           </div>
           
