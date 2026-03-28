@@ -106,10 +106,11 @@ const CreativeShowcase = () => {
     setProgress(0);
     const startTime = Date.now();
 
+    // Update progress at ~15fps instead of ~33fps
     progressRef.current = setInterval(() => {
       const elapsed = Date.now() - startTime;
       setProgress(Math.min((elapsed / AUTOPLAY_INTERVAL) * 100, 100));
-    }, 30);
+    }, 66);
 
     intervalRef.current = setInterval(() => {
       setActiveStep(prev => (prev + 1) % steps.length);
