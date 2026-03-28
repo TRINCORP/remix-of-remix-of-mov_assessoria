@@ -103,8 +103,8 @@ const FloatingLogoCard = ({
         perspective: "1000px"
       }}
     >
-      {/* Glow effect behind card */}
-      <motion.div 
+      {/* Glow effect behind card - pure CSS */}
+      <div 
         className="absolute -inset-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
           background: "radial-gradient(circle at center, hsl(var(--primary) / 0.4) 0%, transparent 70%)",
@@ -132,25 +132,17 @@ const FloatingLogoCard = ({
             : 'bg-gradient-to-br from-card/90 via-card/80 to-card/70'
         }`} />
         
-        {/* Animated border gradient - only on hover */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div 
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%)",
-                padding: "2px",
-                mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                maskComposite: "xor",
-                WebkitMaskComposite: "xor"
-              }}
-              initial={{ rotate: 0, opacity: 0 }}
-              animate={{ rotate: 360, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ rotate: { duration: 8, repeat: Infinity, ease: "linear" }, opacity: { duration: 0.3 } }}
-            />
-          )}
-        </AnimatePresence>
+        {/* Border gradient on hover - CSS only */}
+        <div 
+          className={`absolute inset-0 rounded-2xl transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          style={{
+            background: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%)",
+            padding: "2px",
+            mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            maskComposite: "xor",
+            WebkitMaskComposite: "xor"
+          }}
+        />
         
         {/* Logo container */}
         <div className="relative z-10 w-full h-full p-4 md:p-5 flex items-center justify-center">
@@ -184,50 +176,20 @@ const FloatingLogoCard = ({
           )}
         </div>
         
-        {/* Shine effect */}
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100"
+        {/* Shine effect - CSS transition */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 55%, transparent 60%)",
-            transform: "translateX(-100%)"
           }}
-          animate={isHovered ? { transform: "translateX(100%)" } : { transform: "translateX(-100%)" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
         />
         
-        {/* Sparkle particles on hover */}
-        <AnimatePresence>
-          {isHovered && (
-            <>
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute text-primary"
-                  initial={{ 
-                    opacity: 0, 
-                    scale: 0,
-                    x: "50%",
-                    y: "50%"
-                  }}
-                  animate={{ 
-                    opacity: [0, 1, 0], 
-                    scale: [0, 1, 0],
-                    x: `${30 + Math.random() * 40}%`,
-                    y: `${10 + i * 30}%`
-                  }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: i * 0.15,
-                    ease: "easeOut"
-                  }}
-                >
-                  <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
-                </motion.div>
-              ))}
-            </>
-          )}
-        </AnimatePresence>
+        {/* Sparkle icon on hover - simplified, no AnimatePresence per particle */}
+        {isHovered && (
+          <div className="absolute top-2 right-2 text-primary animate-fade-in">
+            <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
+          </div>
+        )}
       </motion.div>
       
       {/* Client name tooltip */}
@@ -241,30 +203,21 @@ const FloatingLogoCard = ({
   );
 };
 
-// Floating orbs background
+// Floating orbs background - pure CSS animations for zero JS overhead
 const FloatingOrbs = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {[...Array(5)].map((_, i) => (
-      <motion.div
+    {[...Array(3)].map((_, i) => (
+      <div
         key={i}
-        className="absolute rounded-full"
+        className="absolute rounded-full animate-pulse"
         style={{
-          width: `${100 + i * 60}px`,
-          height: `${100 + i * 60}px`,
-          background: `radial-gradient(circle at center, hsl(var(--primary) / ${0.08 - i * 0.01}) 0%, transparent 70%)`,
-          left: `${10 + i * 20}%`,
-          top: `${20 + (i % 3) * 25}%`,
-        }}
-        animate={{
-          y: [0, -30, 0],
-          x: [0, 15, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 6 + i * 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 0.5,
+          width: `${120 + i * 80}px`,
+          height: `${120 + i * 80}px`,
+          background: `radial-gradient(circle at center, hsl(var(--primary) / ${0.06 - i * 0.015}) 0%, transparent 70%)`,
+          left: `${15 + i * 30}%`,
+          top: `${25 + (i % 2) * 30}%`,
+          animationDuration: `${6 + i * 3}s`,
+          animationDelay: `${i * 0.8}s`,
         }}
       />
     ))}
