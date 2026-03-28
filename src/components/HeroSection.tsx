@@ -111,13 +111,13 @@ const HeroSection = () => {
               size="lg"
               className="group relative px-6 sm:px-10 py-5 sm:py-7 text-base sm:text-lg font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-500 overflow-hidden rounded-full shadow-[0_0_40px_rgba(234,179,8,0.3)] hover:shadow-[0_0_60px_rgba(234,179,8,0.5)] hover:scale-105"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-yellow-400 to-primary bg-[length:200%_100%] animate-[shimmer_2s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-yellow-400 to-primary bg-[length:200%_100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <span className="relative z-10 flex items-center gap-3">
                 <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                 Quero estruturar meu marketing
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
-              <div className="absolute inset-0 rounded-full border-2 border-primary/50 animate-ping opacity-20" />
+              <div className="absolute inset-0 rounded-full border-2 border-primary/50 opacity-20" />
             </Button>
           </div>
 
