@@ -112,8 +112,8 @@ const ImpactSection = () => {
                 style={{ filter: 'brightness(1) contrast(1.05) saturate(1.1)' }}
               />
 
-              {/* Pulse dots across Brazil */}
-              {pulsePoints.map((point, i) => {
+              {/* Pulse dots - reduced to 5 key points, longer animation duration */}
+              {pulsePoints.slice(0, 5).map((point, i) => {
                 const sizes = sizeMap[point.size as keyof typeof sizeMap];
                 return (
                   <div
@@ -121,12 +121,10 @@ const ImpactSection = () => {
                     className="absolute -translate-x-1/2 -translate-y-1/2"
                     style={{ left: point.x, top: point.y }}
                   >
-                    {/* Ping ring */}
                     <span
                       className={`absolute -translate-x-1/2 -translate-y-1/2 ${sizes.ping} rounded-full bg-primary/30 animate-ping`}
-                      style={{ animationDelay: `${point.delay}ms`, animationDuration: '2.5s' }}
+                      style={{ animationDelay: `${point.delay}ms`, animationDuration: '3.5s' }}
                     />
-                    {/* Dot */}
                     <span className={`relative block ${sizes.dot} rounded-full bg-primary shadow-lg shadow-primary/50`} />
                   </div>
                 );

@@ -77,25 +77,17 @@ const ShowreelSection = () => {
     <>
       {/* Preview Section */}
       <section className="gsap-section relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-        {/* Background Video Preview (muted, looping) */}
+        {/* Static gradient background instead of autoplay video */}
         <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-30"
-          >
-            <source src={showreelUrl} type="video/mp4" />
-          </video>
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: `url("https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1280&h=720&fit=crop&q=60")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
-        </div>
-
-        {/* Scanline Effect */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
-          <div className="w-full h-full" style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)'
-          }} />
         </div>
 
         {/* Content */}
@@ -130,8 +122,8 @@ const ShowreelSection = () => {
             className="gsap-rotate-in group relative inline-flex items-center justify-center"
           >
             {/* Outer Ring Animation */}
-            <div className="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border border-primary/20 animate-ping" 
-                 style={{ animationDuration: '2s' }} />
+            <div className="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border border-primary/20 animate-pulse" 
+                 style={{ animationDuration: '3s' }} />
             <div className="absolute w-40 h-40 md:w-48 md:h-48 rounded-full border border-primary/10" />
             
             {/* Main Button */}
