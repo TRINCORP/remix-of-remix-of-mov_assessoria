@@ -89,7 +89,7 @@ const ServiceCard = ({
   const Icon = service.icon;
   return (
     <div
-      className="bg-card/95 backdrop-blur-md rounded-2xl overflow-hidden border transition-all duration-500"
+      className="bg-card/95 rounded-2xl overflow-hidden border transition-all duration-500"
       style={{
         borderColor: isActive ? `${service.color}50` : 'hsl(var(--border) / 0.2)',
         boxShadow: isActive
@@ -398,17 +398,17 @@ const ServicesSection = () => {
         }}
       />
 
-      {/* Floating particles — desktop only */}
+      {/* Floating particles — desktop only, reduced count */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-primary/20 animate-float"
+            className="absolute w-1 h-1 rounded-full bg-primary/20 animate-pulse"
             style={{
-              left: `${(i * 8.33) % 100}%`,
-              top: `${(i * 13) % 100}%`,
-              animationDelay: `${i * 0.4}s`,
-              animationDuration: `${6 + i * 0.7}s`,
+              left: `${(i * 20) % 100}%`,
+              top: `${(i * 18) % 100}%`,
+              animationDuration: `${6 + i * 1.5}s`,
+              animationDelay: `${i * 0.8}s`,
             }}
           />
         ))}
